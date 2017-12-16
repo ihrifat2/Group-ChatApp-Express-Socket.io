@@ -2,7 +2,7 @@
 
 A simple group chat application using socket.io and Express
 
-![Group Chat](https://raw.githubusercontent.com/ihrifat2/Group-ChatApp-NodeJs-Socket.io/master/GroupChatApp.PNG)
+![Group Chat](https://raw.githubusercontent.com/ihrifat2/Group-ChatApp-Express-Socket.io/master/GroupChatApp.PNG)
 
 ## Requirement
 
