@@ -1,6 +1,6 @@
 # Group-Chat-NodeJs-Socket.io
 
-A simple group chat application using socket.io and NodeJS
+A simple group chat application using socket.io and Express
 
 ![Group Chat](https://raw.githubusercontent.com/ihrifat2/Group-ChatApp-NodeJs-Socket.io/master/GroupChatApp.PNG)
 
