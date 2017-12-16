@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IO chat</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"> 
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+    <style >
+        #message{
+            padding: 10px;
+        }
+        body{
+            margin: 10px;
+        }
+        #messageArea{
+            display: none;
+        }
+        textarea{
+            width: 100%;
+        }
+        .well{
+            min-height: 20px;
+            padding: 19px;
+            margin-bottom: 20px;
+            background-color: #f5f5f5;
+            border: 1px solid #e3e3e3;
+            border-radius: 4px
+        }
+        #chat{
+            height: 400px;
+            overflow-y: scroll;
+            margin-bottom: 15px;
+        }
+        .paddingTop{
+            padding-top: 10px;
+        }
+        .paddingBottom{
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row" id="userfromArea">
+            <div class="col-md-12">
+                <form id="userForm">
+                    <div class="form-group">
+                        <lable>Enter Username : </lable><br>
+                        <input id="username" class="form-control" type="text" autofocus="">
+                    </div>
+                    <input type="submit" class="btn btn-outline-dark">
+                </form>
+            </div>
+        </div>
+        <div class="row" id="messageArea">
+            <div class="col-md-4 bg-secondary paddingTop" style="float: left;">
+                <div class="well">
+                    <h4>Online Users</h4><hr>
+                    <ul class="list-group" id="users"></ul>
+                </div>
+            </div>
+            <div class="col-md-8 bg-dark paddingTop paddingBottom" style="float: right;">
+                <h4 class="text-light">Messages</h4>
+                <div class="chat" id="chat"></div>
+                <form id="messageForm">
+                    <div class="form-group">
+                        <textarea id="message" cols="70" class="form-control" placeholder="Enter Message...."></textarea>
+                    </div>
+                    <input type="submit" class="btn btn-outline-light" value="Send Message">
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+    $(function(){
+        var socket = io.connect();
+        var $messageForm = $('#messageForm');
+        var $message = $('#message');
+        var $chat = $('#chat');
+        var $userFormArea = $('#userfromArea');
+        var $userForm = $('#userForm');
+        var $messageArea = $('#messageArea');
+        var $users = $('#users');
+        var $username = $('#username');
+
+        $messageForm.submit(function(e){
+            e.preventDefault();
+            socket.emit('send message', $message.val());
+            $message.val('');
+        });
+
+        socket.on('new message', function(data){
+            $chat.append('<div class = "well"><strong>'+data.user+'</strong>:' + data.msg + '<div>');
+        });
+
+        $userForm.submit(function(e){
+            e.preventDefault();
+            socket.emit('new user', $username.val(),function(data){
+                if(data){
+                    $userFormArea.hide();
+                    $messageArea.show();
+                }
+            });
+            $username.val('');
+        });
+        socket.on('get users', function(data){
+            var html = '';
+            for (i = 0; i< data.length; i++){
+                html +='<li class = "list-group-item" >' + data[i]+ '</li>';
+            }
+            $users.html(html);
+        });
+    });
+    </script>
+</body>
+</html>
