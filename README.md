@@ -11,7 +11,7 @@ A simple group chat application using socket.io and Express
 
 ## install 
 
-1. Clone repository `git clone https://github.com/ihrifat2/Group-ChatApp-NodeJs-Socket.io.git`
+1. Clone repository `git clone https://github.com/ihrifat2/Group-ChatApp-Express-Socket.io.git`
 2. Open git bash and type `npm install`
 3. then type in git bash `nodemon`
 
