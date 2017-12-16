@@ -1,4 +1,4 @@
-# Group-Chat-NodeJs-Socket.io
+# Group-Chat-Express-Socket.io
 
 A simple group chat application using socket.io and Express
 
