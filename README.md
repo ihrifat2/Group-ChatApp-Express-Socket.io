@@ -4,8 +4,8 @@ A simple group chat application using socket.io and NodeJS
 
 ## Requirement
 
-1. Install [Git Bash]()
-2. Install [NodeJS]()
+1. Install [Git Bash](https://git-scm.com/)
+2. Install [NodeJS](https://nodejs.org/en/)
 
 ## install 
 
