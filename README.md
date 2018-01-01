@@ -9,13 +9,13 @@ A simple group chat application using socket.io and Express
 1. Install [Git Bash](https://git-scm.com/)
 2. Install [NodeJS](https://nodejs.org/en/)
 
-## install 
+## Install 
 
 1. Clone repository `git clone https://github.com/ihrifat2/Group-ChatApp-Express-Socket.io.git`
 2. Open git bash and type `npm install`
 3. then type in git bash `nodemon`
 
-## usage
+## Usage
 
 1. Add username and hit enter
 2. Type your text 
